@@ -1,6 +1,21 @@
-# Getting Started with Create React App
+# PokeMe - The Nascent Project
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is my version of the take home project for Nascent digital, which consists of a simple web app to collect information about the user, and allow them to select their favourite Pokemon. One of the most interesting parts of software development is the set of tradeoffs made in the process, and I have documented some of my thoughts and philosophies in this document, as well in code comments.
+
+## General Approach
+
+Software development involves answering a few important questions, which reduce the amount of agonizing in development, if you're lucky. One of these questions is: "How much do I need this?" - which can be seen as an offshoot of YAGNI. It's an interesting question, because on one hand it highlights the fact that dependencies make you ~dependent~ on a package - I once worked on a team that was stuck on Python 2.7 because of a single incompatible dependency. On the other hand, it's important to think ahead and ease the possible scaling and improvement of the software.
+
+Keeping this in mind, I follow a somewhat brutalist approach to development in which I focus on delivering the purest possible expression of an idea. I have used icon libraries, CSS preprocessors etc. in the past, but I don't think they are necessary for this project and have stuck with defaults whenever possible.   
+
+## Libraries Used
+
+- React Router (React doesn't have routing built-in and this is the most popular solution)
+
+
+# Create React App Starter Documentation
+
+The section below is an exact copy of the documentation for a react starter project. I have included this documentation to serve as a reference, and as this project doesn't involve changes to the underlying framework, it is still valid. In a real project I might rewrite parts of it to align with the build process. 
 
 ## Available Scripts
 
