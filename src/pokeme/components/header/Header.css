@@ -37,5 +37,5 @@
     display: inline-block;
     color: var(--dark-text-colour);
     line-height: var(--header-height);
-    font-family: 'Roboto', sans-serif;
+    font-family: var(--sans-serif-font);
 }

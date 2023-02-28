@@ -1,11 +1,17 @@
 html {
   font-size: 62.5%;
+
+  /* Colours */
   --dark-text-colour: #222;
   --light-text-colour: #444;
-  --body-font-size: 1.8rem;
-  --border-radius-default: 1.6rem;
   --action-colour: #4cbce6;
   --action-hover-colour: #70d4fa;
+  
+  /* Text & Fonts */
+  --body-font-size: 1.8rem;
+  --border-radius-default: 1.6rem;
+  --serif-font: 'Noto Serif', serif;
+  --sans-serif-font: 'Roboto', sans-serif;
 }
 
 body {

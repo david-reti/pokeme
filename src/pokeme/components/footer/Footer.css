@@ -6,5 +6,5 @@
 
 .footer__text {
     color: #ccc;
-    font-family: 'Noto Serif', serif;
+    font-family: var(--serif-font);
 }
