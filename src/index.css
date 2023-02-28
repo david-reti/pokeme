@@ -4,10 +4,12 @@ html {
   --light-text-colour: #444;
   --body-font-size: 1.8rem;
   --border-radius-default: 1.6rem;
+  --action-colour: #4cbce6;
+  --action-hover-colour: #70d4fa;
 }
 
 body {
   margin: 0;
-  background: url('/public/background.webp') no-repeat;
+  background: url('pokeme/assets/background.webp') no-repeat;
   background-size: cover;
 }

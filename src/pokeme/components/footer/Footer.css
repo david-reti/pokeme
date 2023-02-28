@@ -1,0 +1,10 @@
+.footer {
+    right: 1rem;
+    bottom: 0.5rem;
+    position: absolute;
+}
+
+.footer__text {
+    color: #ccc;
+    font-family: 'Noto Serif', serif;
+}

@@ -5,13 +5,13 @@
     margin-top: 2rem;
     margin-left: auto;
     text-decoration: none;
-    background-color: #4cbce6;
     font-size: var(--body-font-size);
     font-family: 'Roboto', sans-serif;
     transition: background-color 0.2s;
+    background-color: var(--action-colour);
     border-radius: var(--border-radius-default);
 }
 
 .action:hover {
-    background-color: #70d4fa;
+    background-color: var(--action-hover-colour);
 }
