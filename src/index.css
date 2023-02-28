@@ -1,4 +1,13 @@
-body {
-  margin: 0;  
+html {
+  font-size: 62.5%;
+  --dark-text-colour: #222;
+  --light-text-colour: #444;
+  --body-font-size: 1.8rem;
+  --border-radius-default: 1.6rem;
 }
 
+body {
+  margin: 0;
+  background: url('/public/background.webp') no-repeat;
+  background-size: cover;
+}

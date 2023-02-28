@@ -1,0 +1,26 @@
+.container {
+  padding: 1.6rem;
+  max-width: 8.5in;
+  margin: 4rem auto;
+  background: white;
+  border-radius: var(--border-radius-default);
+}
+
+.row {
+  display: flex;
+}
+
+.title {
+  font-weight: 200;
+  font-size: 4.5rem;
+  margin: 2.5rem auto;
+  color: var(--dark-text-colour);
+  font-family: 'Roboto', sans-serif;
+}
+
+.description {
+  line-height: 1.7;
+  color: var(--light-text-colour);
+  font-size: var(--body-font-size);
+  font-family: 'Noto Serif', serif;
+}

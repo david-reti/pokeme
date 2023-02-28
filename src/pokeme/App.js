@@ -6,7 +6,7 @@ import { Outlet } from 'react-router-dom';
 const App = () =>
   <>
     <Header/>
-    <main>
+    <main className='container'>
       <Outlet></Outlet>
     </main>
     <Footer/>
