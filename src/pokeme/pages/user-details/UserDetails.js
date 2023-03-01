@@ -5,6 +5,7 @@ import { Form, useLoaderData } from "react-router-dom";
 
 import { ActionButton, ActionLink } from "../../components/action/Action";
 import ValidatedInput from "../../components/validated-input/ValidatedInput";
+import Message from '../../components/message/Message';
 
 const USER_DETAILS_SCHEMA = Joi.object({
     'First Name': Joi.string().alphanum().min(2).max(128).required(),
@@ -79,8 +80,10 @@ const UserDetails = () => {
                 <ValidatedInput type={'tel'} name='Phone Number' updater={setTelephoneNumber} value={telephoneNumber} errors={fieldErrors.phoneNumber}/>
                 <ValidatedInput type={'text'} name='Address' updater={setAddress} value={address} errors={fieldErrors.address}/>
             </div>
-            {showNavigationMessage && <div className='user-details-form__info'> 
-                Form progress could not be saved, and will be lost when you navigate away from this page.</div>}
+            {showNavigationMessage && 
+                <Message type='info'>
+                    Form progress could not be saved, and will be lost when you navigate away from this page.
+                </Message>}
             <div className='row pushed-to-sides'>
                 <ActionLink to={'/'} className='action--secondary'>Back</ActionLink>
                 <ActionButton enabled={valid}>Next</ActionButton>

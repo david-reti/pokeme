@@ -1,0 +1,17 @@
+.message {
+    padding: 1rem;    
+    margin: auto;
+    color: white;
+    margin-top: 1rem;
+    font-size: 1.6rem;
+    border-radius: 0.5rem;
+    background-color: #888;
+}
+
+.message--info {
+    background-color: var(--action-hover-colour);
+}
+
+.message--error {
+    background-color: var(--error-colour);
+}

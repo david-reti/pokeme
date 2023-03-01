@@ -3,16 +3,6 @@
     gap: 1.8rem;
 }
 
-.user-details-form__info {
-    padding: 1rem;    
-    margin: auto;
-    color: white;
-    margin-top: 1rem;
-    font-size: 1.6rem;
-    border-radius: 0.5rem;
-    background-color: var(--action-hover-colour);
-}
-
 @media screen and (min-width: 480px) {
     .user-details-form__inputs {
         grid-template-columns: repeat(2, 1fr);

@@ -9,7 +9,7 @@
     padding: 1rem;
     margin-top: 0.8rem;
     margin-bottom: 0.5rem;
-    border: 0.1rem solid black;
+    border: var(--border-default);
     font-family: var(--sans-serif-font); 
     border-radius: var(--border-radius-default);
 }

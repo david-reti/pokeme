@@ -1,0 +1,21 @@
+.pokemon {
+    display: flex;
+    padding: 1rem;
+    background-color: white;
+    border: var(--border-default);
+    border-radius: var(--border-radius-default);
+}
+
+.pokemon--selected {
+    background-color: #eee;
+}
+
+.pokemon:hover {
+    cursor: pointer;
+    background-color: #eee;
+}
+
+.pokemon__name {
+    text-transform: capitalize;
+    font-family: var(--sans-serif-font);
+}
