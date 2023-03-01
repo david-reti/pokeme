@@ -7,7 +7,16 @@
 }
 
 .row {
+  gap: 1rem;
   display: flex;
+}
+
+.pushed-to-sides {
+  justify-content: space-between;
+}
+
+.pushed-right {
+  margin-left: auto;
 }
 
 .title {

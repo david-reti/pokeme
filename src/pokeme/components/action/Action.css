@@ -3,7 +3,7 @@
     color: white;
     font-weight: 700;
     margin-top: 2rem;
-    margin-left: auto;
+    text-align: center;
     text-decoration: none;
     font-size: var(--body-font-size);
     font-family: 'Roboto', sans-serif;
@@ -31,4 +31,12 @@ button.action:disabled {
 
 .action:hover {
     background-color: var(--action-hover-colour);
+}
+
+.action--secondary {
+    background-color: var(--secondary-button-colour);
+}
+
+.action--secondary:hover {
+    background-color: var(--secondary-hover-colour);
 }

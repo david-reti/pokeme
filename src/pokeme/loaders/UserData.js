@@ -3,7 +3,9 @@ const loadUserData = () => {
 }
 
 const loadUserFavourites = () => {
-
+    return {
+        pokemonTypes: [] 
+    };
 }
 
 export { loadUserData, loadUserFavourites };

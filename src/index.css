@@ -1,5 +1,6 @@
 html {
   font-size: 62.5%;
+  height: 100%;
 
   /* Colours */
   --dark-text-colour: #222;
@@ -7,6 +8,7 @@ html {
   --action-colour: #4cbce6;
   --action-hover-colour: #70d4fa;
   --secondary-button-colour: #888;
+  --secondary-hover-colour: #aaa;
   --error-colour: #db0202;
   
   /* Text & Fonts */
@@ -14,6 +16,8 @@ html {
   --border-radius-default: 1.6rem;
   --serif-font: 'Noto Serif', serif;
   --sans-serif-font: 'Roboto', sans-serif;
+
+  --border-default: 0.1rem solid black;
 }
 
 @media screen and (max-width: 480px) {

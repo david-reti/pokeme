@@ -1,0 +1,25 @@
+.category-search {
+    display: flex;
+}
+
+.category-search__query {
+    padding: 1.4rem;
+    flex-grow: 1;
+    font-size: 1.4rem;
+    font-family: var(--sans-serif-font);
+    border: var(--border-default);
+    border-right: none;
+    border-radius: var(--border-radius-default);
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.category-search__options {
+    padding: 1.4rem;
+    font-family: var(--sans-serif-font);
+    border: var(--border-default);
+    border-left: none;
+    border-radius: var(--border-radius-default);
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}

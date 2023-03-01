@@ -3,7 +3,7 @@ import Joi from "joi";
 import { useEffect, useState } from "react";
 import { Form, useLoaderData } from "react-router-dom";
 
-import { ActionButton } from "../../components/action/Action";
+import { ActionButton, ActionLink } from "../../components/action/Action";
 import ValidatedInput from "../../components/validated-input/ValidatedInput";
 
 const USER_DETAILS_SCHEMA = Joi.object({
@@ -81,7 +81,10 @@ const UserDetails = () => {
             </div>
             {showNavigationMessage && <div className='user-details-form__info'> 
                 Form progress could not be saved, and will be lost when you navigate away from this page.</div>}
-            <ActionButton enabled={valid}>Next</ActionButton>
+            <div className='row pushed-to-sides'>
+                <ActionLink to={'/'} className='action--secondary'>Back</ActionLink>
+                <ActionButton enabled={valid}>Next</ActionButton>
+            </div>
         </Form>
     </>
 }
