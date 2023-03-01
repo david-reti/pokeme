@@ -12,9 +12,21 @@
     border-radius: var(--border-radius-default);
 }
 
+@media screen and (max-width: 480px) {
+    .action {
+        flex-grow: 1;
+        font-size: calc(var(--body-font-size) * 1.5);
+    }   
+}
+
 button.action {
     border: none;
     cursor: pointer;
+}
+
+button.action:disabled {
+    cursor: default;
+    background-color: var(--secondary-button-colour);
 }
 
 .action:hover {

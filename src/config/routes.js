@@ -8,6 +8,7 @@ import ReviewSubmission from '../pokeme/pages/review-submission/ReviewSubmission
 
 /* Actions and Loaders */
 import { saveUserDetails, saveUserFavourites } from '../pokeme/actions/UserData';
+import { loadUserData } from '../pokeme/loaders/UserData';
 
 const ROUTES = {
     path: '/',
@@ -21,7 +22,8 @@ const ROUTES = {
       {
         path: 'user/details',
         element: <UserDetails/>,
-        action: saveUserDetails
+        action: saveUserDetails,
+        loader: loadUserData
       },
       {
         path: 'user/favourites',

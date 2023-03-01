@@ -11,7 +11,7 @@ Keeping this in mind, I follow a somewhat brutalist approach to development in w
 ## Libraries Used
 
 - React Router (React doesn't have routing built-in and this is the most popular solution)
-
+- Joi (Validation can be tricky to get right when working fast, and this library helps)
 
 # Create React App Starter Documentation
 

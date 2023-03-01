@@ -1,5 +1,5 @@
 const loadUserData = () => {
-
+    return sessionStorage.getItem('user-details') || {};
 }
 
 const loadUserFavourites = () => {

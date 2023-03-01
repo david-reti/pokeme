@@ -1,6 +1,6 @@
 .container {
   padding: 1.6rem;
-  max-width: 8.5in;
+  max-width: min(8.5in, 80%);
   margin: 4rem auto;
   background: white;
   border-radius: var(--border-radius-default);

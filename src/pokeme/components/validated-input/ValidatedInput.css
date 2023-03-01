@@ -1,0 +1,25 @@
+.validated-input {
+    display: flex;
+    font-size: 1.75rem;
+    flex-direction: column;
+    font-family: var(--sans-serif-font);
+}
+
+.validated-input__input {
+    padding: 1rem;
+    margin-top: 0.8rem;
+    margin-bottom: 0.5rem;
+    border: 0.1rem solid black;
+    font-family: var(--sans-serif-font); 
+    border-radius: var(--border-radius-default);
+}
+
+.validated-input__input--error {
+    border-color: var(--error-colour);
+}
+
+.validated-input__error {
+    font-size: 1.2rem;
+    color: var(--error-colour);
+    font-family: var(--serif-font);
+}

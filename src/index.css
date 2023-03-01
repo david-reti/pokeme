@@ -6,12 +6,20 @@ html {
   --light-text-colour: #444;
   --action-colour: #4cbce6;
   --action-hover-colour: #70d4fa;
+  --secondary-button-colour: #888;
+  --error-colour: #db0202;
   
   /* Text & Fonts */
   --body-font-size: 1.8rem;
   --border-radius-default: 1.6rem;
   --serif-font: 'Noto Serif', serif;
   --sans-serif-font: 'Roboto', sans-serif;
+}
+
+@media screen and (max-width: 480px) {
+  html {
+    font-size: 50%;
+  }
 }
 
 body {
