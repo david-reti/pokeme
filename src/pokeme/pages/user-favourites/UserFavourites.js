@@ -31,8 +31,8 @@ const UserFavourites = () => {
     const [pokemonLoadError, setPokemonLoadError] = useState(false);
 
     const [searchInput, setSearchInput] = useState({
-        term: userFavourites.search.term || '', 
-        category: userFavourites.category || DEFAULT_CATEGORY
+        term: userFavourites?.search?.term || '', 
+        category: userFavourites?.search?.category || DEFAULT_CATEGORY
     });
     const [selectedPokemon, setSelectedPokemon] = useState(userFavourites.pokemon || '');
     const [allAvailablePokemon, setAllAvailablePokemon] = useState([]);

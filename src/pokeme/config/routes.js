@@ -10,6 +10,7 @@ import ReviewSubmission from '../pages/review-submission/ReviewSubmission';
 import { saveUserDetails, saveUserFavourites } from '../actions/UserData';
 import { loadDataForSubmission, loadUserData, loadUserFavourites } from '../loaders/UserData';
 import AttemptSubmission from '../actions/Submission';
+import Success from '../pages/success/Success';
 
 const ROUTES = {
     path: '/',
@@ -37,6 +38,10 @@ const ROUTES = {
         element: <ReviewSubmission/>,
         action: AttemptSubmission,
         loader: loadDataForSubmission
+      },
+      {
+        path: 'submission/success',
+        element: <Success/>
       }
     ]
 }

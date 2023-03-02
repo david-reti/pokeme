@@ -1,6 +1,6 @@
 import './Footer.css'
 
-import { CREDITS, DEVELOPER } from '../../../config/messages';
+import { CREDITS, DEVELOPER } from '../../config/messages';
 
 const Footer = () =>
     <footer className='footer'>

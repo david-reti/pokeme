@@ -1,6 +1,6 @@
 import './ReviewSubmission.css';
 
-import { Link, useLoaderData } from "react-router-dom";
+import { Form, Link, useLoaderData, useNavigation } from "react-router-dom";
 
 import Card from "../../components/card/Card";
 import Spacer from "../../components/spacer/Spacer";
@@ -28,33 +28,37 @@ const ReviewSubmission = () => {
     const userPokemon = userFavourites?.pokemon || '';
     const userDetailsValid = !(USER_DETAILS_SCHEMA.validate(userDetails).error);
 
+    const navigation = useNavigation();
+
     return (
         <Card title={SUBMIT_TITLE} description={SUBMIT_DESCRIPTION}>
-            {/* Card containing user details, clicking will navigate back to the user details page */}
-            <Link to={'/user/details'} className='undecorate hoverable'>
-                <Card title={USER_DETAILS_TITLE} titleSize='small' bordered>
-                    {userDetailsValid &&
-                        [FIRST_NAME, LAST_NAME, PHONE_NUMBER, ADDRESS].map(userDetail => 
-                            <p key={userDetail} className='user-detail-text'>
-                                <strong className="capitalise">{userDetail}</strong>: 
-                                {' ' + userDetails[slugify(userDetail)]}
-                            </p>
-                        )
-                    }
-                    {!userDetailsValid && <p className="status-text">{INVALID_USER_DETAILS}</p>}
-                </Card>
-            </Link>
+            <Form method='post'>
+                {/* Card containing user details, clicking will navigate back to the user details page */}
+                <Link to={'/user/details'} className='undecorate hoverable'>
+                    <Card title={USER_DETAILS_TITLE} titleSize='small' bordered>
+                        {userDetailsValid &&
+                            [FIRST_NAME, LAST_NAME, PHONE_NUMBER, ADDRESS].map(userDetail => 
+                                <p key={userDetail} className='user-detail-text'>
+                                    <strong className="capitalise">{userDetail}</strong>: 
+                                    {' ' + userDetails[slugify(userDetail)]}
+                                </p>
+                            )
+                        }
+                        {!userDetailsValid && <p className="status-text">{INVALID_USER_DETAILS}</p>}
+                    </Card>
+                </Link>
 
-            <Spacer/>
+                <Spacer/>
 
-            {/* Card containing user favourites, clicking on it will navigate the user back to the pokemon page */}
-            <Link to={'/user/favourites'} className='undecorate hoverable'>
-                <Card title={FAVOURITES_TITLE} titleSize='small' bordered>
-                    {(userPokemon) && <Pokemon url={userPokemon}></Pokemon>}
-                    {(!userPokemon) && <p className='status-text'>{INVALID_POKEMON}</p>}
-                </Card>
-            </Link>
-            <NavigationRow backLink='/user/favourites' actionText={SUBMIT} enabled={userPokemon && userDetailsValid}/>
+                {/* Card containing user favourites, clicking on it will navigate the user back to the pokemon page */}
+                <Link to={'/user/favourites'} className='undecorate hoverable'>
+                    <Card title={FAVOURITES_TITLE} titleSize='small' bordered>
+                        {(userPokemon) && <Pokemon url={userPokemon}></Pokemon>}
+                        {(!userPokemon) && <p className='status-text'>{INVALID_POKEMON}</p>}
+                    </Card>
+                </Link>
+                <NavigationRow backLink='/user/favourites' actionText={SUBMIT} enabled={userPokemon && userDetailsValid} loading={navigation.state === 'submitting'}/>
+            </Form>
         </Card>
     );
 }

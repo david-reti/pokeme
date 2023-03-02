@@ -72,6 +72,10 @@ const INVALID_USER_DETAILS = 'User details are invalid or missing';
 
 const INVALID_POKEMON = 'A pokémon still needs to be selected';
 
+const SUCCESS = 'Success';
+
+const SUCCESS_MESSAGE = 'Your form has been successfully submitted to the mock API';
+
 export {    TITLE,
             ROOT_TITLE,
             USER_DETAILS_TITLE,
@@ -102,4 +106,6 @@ export {    TITLE,
             SUBMIT,
             BACK_TO_ROOT,
             INVALID_USER_DETAILS,
-            INVALID_POKEMON };
+            INVALID_POKEMON,
+            SUCCESS,
+            SUCCESS_MESSAGE };

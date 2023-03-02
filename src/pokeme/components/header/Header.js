@@ -3,7 +3,7 @@ import './Header.css'
 import { Link } from 'react-router-dom';
 
 import Logo from '../../assets/Logo.png'
-import { TITLE } from '../../../config/messages';
+import { TITLE } from '../../config/messages';
 
 const Header = () =>
     <header className='header'>
