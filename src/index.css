@@ -1,6 +1,5 @@
 html {
   font-size: 62.5%;
-  height: 100%;
 
   /* Colours */
   --dark-text-colour: #222;
@@ -28,7 +27,6 @@ html {
 
 body {
   margin: 0;
-  height: 100%;
   background: url('pokeme/assets/background.webp') no-repeat;
   background-size: cover;
 }

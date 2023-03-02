@@ -5,7 +5,7 @@ const MESSAGE_CLASS = {
     'error': 'message--error'
 }
 
-const Message = ({type, children}) =>
-    <div className={`message ${MESSAGE_CLASS[type] || ''}`}>{children}</div>
+const Message = ({type, children, style = {}}) =>
+    <div className={`message ${MESSAGE_CLASS[type] || ''}`} style={style}>{children}</div>
 
 export default Message;

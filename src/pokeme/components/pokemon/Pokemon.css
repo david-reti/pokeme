@@ -1,8 +1,10 @@
 .pokemon {
     display: flex;
     padding: 1rem;
+    min-height: 9rem; /* This is just to help reduce resizing as images load */
     background-color: white;
     border: var(--border-default);
+    justify-content: space-between;
     border-radius: var(--border-radius-default);
 }
 
@@ -16,6 +18,21 @@
 }
 
 .pokemon__name {
+    font-size: 1.6rem;
     text-transform: capitalize;
     font-family: var(--sans-serif-font);
+}
+
+.pokemon__type {
+    font-size: 1.2rem;
+    text-align: left;
+    margin: 0.4rem 0;
+    text-transform: capitalize;
+    color: var(--dark-text-colour);
+    font-family: var(--serif-font);
+}
+
+.pokemon__image {
+    width: 8rem;
+    height: 8rem;
 }

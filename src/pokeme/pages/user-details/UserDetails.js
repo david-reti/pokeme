@@ -6,6 +6,7 @@ import { Form, useLoaderData } from "react-router-dom";
 import { ActionButton, ActionLink } from "../../components/action/Action";
 import ValidatedInput from "../../components/validated-input/ValidatedInput";
 import Message from '../../components/message/Message';
+import { NAVIGATION_WARNING } from '../../../config/messages';
 
 const USER_DETAILS_SCHEMA = Joi.object({
     'First Name': Joi.string().alphanum().min(2).max(128).required(),
@@ -74,16 +75,18 @@ const UserDetails = () => {
             We will start by gathering some basic information about you - all these data stay on your device and all fields are required.
         </p>
         <Form method="post">
+            {/* User data input fields */}
             <div className='user-details-form__inputs'>
                 <ValidatedInput type={'text'} name='First Name' updater={setFirstName} value={firstName} errors={fieldErrors.firstName}/>
                 <ValidatedInput type={'text'} name='Last Name' updater={setLastName} value={lastName} errors={fieldErrors.lastName}/>
                 <ValidatedInput type={'tel'} name='Phone Number' updater={setTelephoneNumber} value={telephoneNumber} errors={fieldErrors.phoneNumber}/>
                 <ValidatedInput type={'text'} name='Address' updater={setAddress} value={address} errors={fieldErrors.address}/>
             </div>
-            {showNavigationMessage && 
-                <Message type='info'>
-                    Form progress could not be saved, and will be lost when you navigate away from this page.
-                </Message>}
+
+            {/* Warning message for user navigation */}
+            {showNavigationMessage && <Message type='info'>{NAVIGATION_WARNING}</Message>}
+            
+            {/* Bottom row - buttons for navigation */}
             <div className='row pushed-to-sides'>
                 <ActionLink to={'/'} className='action--secondary'>Back</ActionLink>
                 <ActionButton enabled={valid}>Next</ActionButton>

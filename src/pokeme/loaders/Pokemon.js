@@ -1,5 +1,7 @@
 import { REQUEST_ERROR_MESSAGES } from "../../util/requestErrorMessages";
 
+const POKE_API_URL = 'https://pokeapi.co/api/v2'; 
+
 /* 
     This is a generic function for fetching resources from the PokeAPI.
 
@@ -11,7 +13,7 @@ import { REQUEST_ERROR_MESSAGES } from "../../util/requestErrorMessages";
 */
 const fetchFromPokeAPI = async resource => {
     try {
-        const response = await fetch(`https://pokeapi.co/api/v2/${resource}`);
+        const response = await fetch(resource);
         if(response.ok === false) {
             return { error: REQUEST_ERROR_MESSAGES[response.status] || `The request to fetch data failed with status ${response.status} `, resource: {}};
         }
@@ -22,21 +24,27 @@ const fetchFromPokeAPI = async resource => {
 }
 
 // Function to fetch a list of strings representing pokemon types
-const loadPokemonTypes = async () => {
-    const {error, resource} = await fetchFromPokeAPI('type');
-    if(!error) {
-        return {error: '', types: resource.results.map(result => result.name)};
-    }
-    return {error: error, types: []};
+const loadPokemonTypes = async (limit=2000) => {
+    const {error, resource} = await fetchFromPokeAPI(`${POKE_API_URL}/type?limit=${limit}`);
+    return {error: error, types: (resource?.results?.map(result => result.name)) || []};
 }
 
-// Function to fetch a list of objects representing pokemon properties
-const loadPokemon = async () => {
-    const {error, resource} = await fetchFromPokeAPI('pokemon');
-    if(!error) {
-        return {error: '', pokemon: resource.results};
-    }
-    return {error: error, pokemon: []};
+// Function to fetch a list of objects representing the names of pokemon
+const loadPokemon = async (limit=2000) => {
+    const {error, resource} = await fetchFromPokeAPI(`${POKE_API_URL}/pokemon?limit=${limit}`);
+    return {error: error, pokemon: resource?.results || []};
 }
 
-export { loadPokemonTypes, loadPokemon };
+// Function to load details of a particular pokemon, for display
+const loadPokemonDetails = async url => {
+    const {error, resource} = await fetchFromPokeAPI(url);
+    return {error: error, details: resource || []};
+}
+
+// Function to load the details of a given type of pokemon
+const loadPokemonType = async type => {
+    const {error, resource} = await fetchFromPokeAPI(`${POKE_API_URL}/type/${type}`);
+    return {error: error, type: resource};
+}
+
+export { loadPokemonTypes, loadPokemon, loadPokemonType, loadPokemonDetails };
