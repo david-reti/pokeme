@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom/client';
 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
-import ROUTES from './config/routes';
+import ROUTES from './pokeme/config/routes';
 
 /* Global Constant Definitions */
 const root = ReactDOM.createRoot(document.getElementById('root'));

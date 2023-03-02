@@ -1,5 +1,5 @@
-import { POKE_API_URL } from "../../config/urls";
-import { REQUEST_ERROR_MESSAGES, REQUEST_FAILED } from "../../config/messages";
+import { POKE_API_URL } from "../config/urls";
+import { REQUEST_ERROR_MESSAGES, REQUEST_FAILED } from "../config/messages";
 
 /* 
     This is a generic function for fetching resources from the PokeAPI.

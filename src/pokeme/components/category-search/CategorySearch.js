@@ -1,6 +1,6 @@
 import './CategorySearch.css';
 
-import { DEFAULT_CATEGORY } from '../../../config/messages';
+import { DEFAULT_CATEGORY } from '../../config/messages';
 
 /*
     This is a composite input type which allows for both a search phrase and a category to be collected

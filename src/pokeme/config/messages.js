@@ -44,7 +44,7 @@ const FAVOURITES_DESCRIPTION = 'Search for your favourite pokémon by name and t
 
 const SUBMIT_TITLE = 'Review Submission';
 
-const SUBMIT_DESCRIPTION = 'Here you can view the data which will be submitted and go back to any previous page to enter change it.';
+const SUBMIT_DESCRIPTION = 'Here you can view the data which will be submitted and go back to any previous page to enter or change it.';
 
 const ERROR_TITLE = 'Unfortunately, an error has occured';
 
@@ -66,7 +66,11 @@ const NEXT = 'Next';
 
 const SUBMIT = 'Submit';
 
-const BACK_TO_ROOT = '';
+const BACK_TO_ROOT = 'Back to Root';
+
+const INVALID_USER_DETAILS = 'User details are invalid or missing';
+
+const INVALID_POKEMON = 'A pokémon still needs to be selected';
 
 export {    TITLE,
             ROOT_TITLE,
@@ -96,4 +100,6 @@ export {    TITLE,
             BACK,
             NEXT,
             SUBMIT,
-            BACK_TO_ROOT };
+            BACK_TO_ROOT,
+            INVALID_USER_DETAILS,
+            INVALID_POKEMON };

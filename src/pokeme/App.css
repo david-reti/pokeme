@@ -1,6 +1,5 @@
 .container {
   z-index: 1;
-  padding: 1.6rem;
   max-width: min(8.5in, 80%);
   margin: 4rem auto;
   background: white;
@@ -23,14 +22,24 @@
 
 .title {
   font-weight: 200;
-  font-size: 4.5rem;
   margin: 2.5rem auto;
+  text-decoration: none;
   color: var(--dark-text-colour);
   font-family: var(--sans-serif-font);
 }
 
-.title--small {
+.title--large {
+  font-size: 4.5rem;
+}
+
+.title--medium {
   font-size: 2.8rem;
+  margin-top: 1.8rem;
+}
+
+.title--small {
+  font-size: 1.6rem;
+  margin-top: 0;
 }
 
 .description {
@@ -46,4 +55,22 @@
   font-size: 1.4rem;
   text-align: center;
   font-family: var(--serif-font);
+}
+
+.capitalise {
+  text-transform: capitalize;
+}
+
+.undecorate {
+  text-decoration: none;
+}
+
+.hoverable:hover {
+  cursor: pointer;
+  background-color: var(--default-hover-colour);
+}
+
+.hoverable:hover * {
+  cursor: pointer;
+  background-color: var(--default-hover-colour);
 }

@@ -1,13 +1,13 @@
 import './UserDetails.css';
-import Joi from "joi";
 import { useEffect, useState } from "react";
 import { Form, useLoaderData } from "react-router-dom";
 
+import Card from '../../components/card/Card';
 import Message from '../../components/message/Message';
 import NavigationRow from '../../components/navigation-row/NavigationRow';
 import ValidatedInput from "../../components/validated-input/ValidatedInput";
 
-import { PHONE_VALIDATION_PATTERN } from '../../../config/patterns';
+import { USER_DETAILS_SCHEMA } from '../../config/validators';
 import { 
     NAVIGATION_WARNING, 
     USER_DETAILS_TITLE, 
@@ -15,20 +15,7 @@ import {
     FIRST_NAME, 
     LAST_NAME, 
     ADDRESS, 
-    PHONE_NUMBER } from '../../../config/messages';
-
-
-const USER_DETAILS_SCHEMA = Joi.object({
-    FIRST_NAME: Joi.string().alphanum().min(2).max(128).required().label(FIRST_NAME),
-    LAST_NAME: Joi.string().alphanum().min(2).max(128).required().label(LAST_NAME),
-    
-    // This type of input will validate both US / Canadian and international phone numbers, but the regex is a bit messy
-    PHONE_NUMBER: Joi.string().min(10).pattern(PHONE_VALIDATION_PATTERN, PHONE_NUMBER).required().label(PHONE_NUMBER),
-        
-    // It would be best to split this between multiple elements in a production setting
-    // As I would like to keep to the project requirements, I'm only doing basic checks to allow for flexibility
-    ADDRESS: Joi.string().min(2).max(256).required().label(ADDRESS)
-});
+    PHONE_NUMBER } from '../../config/messages';
 
 /*
     This page includes a form for gathering information about the user. It automatically validates
@@ -79,24 +66,23 @@ const UserDetails = () => {
         }
     }, [firstName, lastName, telephoneNumber, address, valid]);
 
-    return <>
-        <h2 className="title title--small">{USER_DETAILS_TITLE}</h2>
-        <p className="description">{USER_DETAILS_DESCRIPTION}</p>
+    return (
+        <Card title={USER_DETAILS_TITLE} description={USER_DETAILS_DESCRIPTION}>
+            <Form method="post">
+                {/* User data input fields */}
+                <div className='user-details-form__inputs'>
+                    <ValidatedInput type={'text'} name={FIRST_NAME} updater={setFirstName} value={firstName} errors={fieldErrors.firstName}/>
+                    <ValidatedInput type={'text'} name={LAST_NAME} updater={setLastName} value={lastName} errors={fieldErrors.lastName}/>
+                    <ValidatedInput type={'tel'} name={PHONE_NUMBER} updater={setTelephoneNumber} value={telephoneNumber} errors={fieldErrors.phoneNumber}/>
+                    <ValidatedInput type={'text'} name={ADDRESS} updater={setAddress} value={address} errors={fieldErrors.address}/>
+                </div>
 
-        <Form method="post">
-            {/* User data input fields */}
-            <div className='user-details-form__inputs'>
-                <ValidatedInput type={'text'} name={FIRST_NAME} updater={setFirstName} value={firstName} errors={fieldErrors.firstName}/>
-                <ValidatedInput type={'text'} name={LAST_NAME} updater={setLastName} value={lastName} errors={fieldErrors.lastName}/>
-                <ValidatedInput type={'tel'} name={PHONE_NUMBER} updater={setTelephoneNumber} value={telephoneNumber} errors={fieldErrors.phoneNumber}/>
-                <ValidatedInput type={'text'} name={ADDRESS} updater={setAddress} value={address} errors={fieldErrors.address}/>
-            </div>
-
-            {showNavigationMessage && <Message type='info'>{NAVIGATION_WARNING}</Message>}
-            
-            <NavigationRow backLink='/' enabled={valid}/>
-        </Form>
-    </>
+                {showNavigationMessage && <Message type='info'>{NAVIGATION_WARNING}</Message>}
+                
+                <NavigationRow backLink='/' enabled={valid}/>
+            </Form>
+        </Card>
+    );
 }
 
 export default UserDetails;

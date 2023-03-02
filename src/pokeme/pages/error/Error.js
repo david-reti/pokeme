@@ -1,5 +1,6 @@
 import { useRouteError } from "react-router-dom";
 
+import Card from "../../components/card/Card";
 import { ActionLink } from "../../components/action/Action";
 
 import { BACK_TO_ROOT, ERROR_DESCRIPTION, ERROR_TITLE } from "../../../config/messages";
@@ -7,12 +8,14 @@ import { BACK_TO_ROOT, ERROR_DESCRIPTION, ERROR_TITLE } from "../../../config/me
 export default function Error () {
     const routeError = useRouteError();
 
-    return <div className="container">
-        <h2 className="title title--small">{ERROR_TITLE}</h2>
-        <p className="description">{routeError.statusText || routeError.message}</p>
-        <p className="description">{ERROR_DESCRIPTION}</p>
-        <div className="row">
-            <ActionLink to={'/'}>{BACK_TO_ROOT}</ActionLink>
+    return (
+        <div className="container">
+            <Card title={ERROR_TITLE} description={ERROR_DESCRIPTION}>
+                <p className="description">{routeError.status}: {routeError.statusText || routeError.message}</p>
+                <div className="row">
+                    <ActionLink to={'/'}>{BACK_TO_ROOT}</ActionLink>
+                </div>
+            </Card>
         </div>
-    </div>
+    );
 }

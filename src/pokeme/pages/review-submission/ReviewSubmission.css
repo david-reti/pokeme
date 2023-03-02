@@ -1,0 +1,5 @@
+.user-detail-text {
+    font-size: 1.2rem;
+    font-family: var(--serif-font);
+    color: var(--light-text-colour);
+}

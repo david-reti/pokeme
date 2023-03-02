@@ -1,14 +1,21 @@
 import { loadPokemonTypes } from "./Pokemon";
 
 const loadUserData = () => {
-    return sessionStorage.getItem('user-details') || {};
+    return JSON.parse(sessionStorage.getItem('user-details')) || {};
 }
 
 const loadUserFavourites = async () => {
    return {
-        userFavourites: sessionStorage.getItem('user-favourites') || {},
+        userFavourites: JSON.parse(sessionStorage.getItem('user-favourites')) || {},
         pokemonTypes: (await loadPokemonTypes())
    }
 }
 
-export { loadUserData, loadUserFavourites };
+const loadDataForSubmission = () => {
+    return {
+        userDetails: JSON.parse(sessionStorage.getItem('user-details')) || {},
+        userFavourites: JSON.parse(sessionStorage.getItem('user-favourites')) || {}
+    };
+}
+
+export { loadUserData, loadUserFavourites, loadDataForSubmission };

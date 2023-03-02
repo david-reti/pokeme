@@ -9,12 +9,7 @@
 }
 
 .pokemon--selected {
-    background-color: #eee;
-}
-
-.pokemon:hover {
-    cursor: pointer;
-    background-color: #eee;
+    background-color: var(--default-hover-colour);
 }
 
 .pokemon__name {

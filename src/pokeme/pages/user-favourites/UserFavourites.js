@@ -5,12 +5,13 @@ import { Form, useLoaderData } from "react-router-dom";
 
 import { loadPokemon, loadPokemonType } from "../../loaders/Pokemon";
 
+import Card from '../../components/card/Card';
 import Message from "../../components/message/Message";
 import Pokemon from "../../components/pokemon/Pokemon";
 import NavigationRow from '../../components/navigation-row/NavigationRow';
 import CategorySearch from "../../components/category-search/CategorySearch";
 
-import { PAGE_SIZE } from '../../../config/preferences';
+import { PAGE_SIZE } from '../../config/preferences';
 import {
     FAVOURITES_DESCRIPTION, 
     FAVOURITES_TITLE, 
@@ -18,19 +19,22 @@ import {
     NO_MATCHING_POKEMON, 
     POKEMON_LIST_LOAD_ERROR, 
     POKEMON_TYPES_LOAD_ERROR,
-    DEFAULT_CATEGORY } from '../../../config/messages';
+    DEFAULT_CATEGORY } from '../../config/messages';
 
 /*
     This page allows the user to select their favourite pokemon - it fetches data both before and during
     The activity and only allows the user to proceed once they have chosen a pokemon.
 */
 const UserFavourites = () => {
-    const { pokemonTypes } = useLoaderData();
+    const { pokemonTypes, userFavourites } = useLoaderData();
     const { types: availableTypes, error: typeLoadError } = pokemonTypes; 
     const [pokemonLoadError, setPokemonLoadError] = useState(false);
 
-    const [searchInput, setSearchInput] = useState({term: '', category: DEFAULT_CATEGORY});
-    const [selectedPokemon, setSelectedPokemon] = useState('');
+    const [searchInput, setSearchInput] = useState({
+        term: userFavourites.search.term || '', 
+        category: userFavourites.category || DEFAULT_CATEGORY
+    });
+    const [selectedPokemon, setSelectedPokemon] = useState(userFavourites.pokemon || '');
     const [allAvailablePokemon, setAllAvailablePokemon] = useState([]);
     const [pokemonOfType, setPokemonOfType] = useState([]);
 
@@ -88,32 +92,32 @@ const UserFavourites = () => {
         }
     }, [searchInput, selectedPokemon]);
 
-    return <>
-        <h1 className="title title--small">{FAVOURITES_TITLE}</h1>
-        <p className="description">{FAVOURITES_DESCRIPTION}</p>
-        <Form method="post">
-            <CategorySearch placeholder={'Pokémon Name'} categories={typeLoadError ? [] : availableTypes} updateFunction={updateSearch} value={searchInput}/>
-            
-            {/* If all pokemon were loaded without error, display them in a grid of search results */}
-            {!thereIsAnError && 
-                <section className="search-results">
-                    {allAvailablePokemon.length > 0 && filteredPokemon().map(pokemon => 
-                            <Pokemon key={pokemon.url} selected={pokemon.url === selectedPokemon} selector={() => selectPokemon(pokemon.url)} {...pokemon}/>) }
-                </section>
-            }
+    return (
+        <Card title={FAVOURITES_TITLE} description={FAVOURITES_DESCRIPTION}>
+            <Form method="post">
+                <CategorySearch placeholder={'Pokémon Name'} categories={typeLoadError ? [] : availableTypes} updateFunction={updateSearch} value={searchInput}/>
+                
+                {/* If all pokemon were loaded without error, display them in a grid of search results */}
+                {!thereIsAnError && 
+                    <section className="search-results">
+                        {allAvailablePokemon.length > 0 && filteredPokemon().map(pokemon => 
+                                <Pokemon key={pokemon.url} selected={pokemon.url === selectedPokemon} selector={url => selectPokemon(url)} {...pokemon}/>) }
+                    </section>
+                }
 
-            {/* If there was no error but there are also no search results, display a simple text */}
-            {(!thereIsAnError && filteredPokemon().length === 0) && 
-                    <p className="status-text">{NO_MATCHING_POKEMON}</p>}
-            
-            {/* If there is an error, display a message with the details */}
-            {thereIsAnError &&
-                <Message type='error'>{errorMessage || POKEMON_LIST_LOAD_ERROR}</Message>
-            }
+                {/* If there was no error but there are also no search results, display a simple text */}
+                {(!thereIsAnError && filteredPokemon().length === 0) && 
+                        <p className="status-text">{NO_MATCHING_POKEMON}</p>}
+                
+                {/* If there is an error, display a message with the details */}
+                {thereIsAnError &&
+                    <Message type='error'>{errorMessage || POKEMON_LIST_LOAD_ERROR}</Message>
+                }
 
-            <NavigationRow backLink='/user/details' enabled={selectedPokemon}/>
-        </Form>
-    </>
+                <NavigationRow backLink='/user/details' enabled={selectedPokemon}/>
+            </Form>
+        </Card>
+    );
 }
 
 export default UserFavourites;

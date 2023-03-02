@@ -9,7 +9,8 @@ html {
   --secondary-button-colour: #888;
   --secondary-hover-colour: #aaa;
   --error-colour: #db0202;
-  
+  --default-hover-colour: #eee;
+
   /* Text & Fonts */
   --body-font-size: 1.8rem;
   --border-radius-default: 1.6rem;
