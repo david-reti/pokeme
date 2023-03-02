@@ -3,21 +3,31 @@ import Joi from "joi";
 import { useEffect, useState } from "react";
 import { Form, useLoaderData } from "react-router-dom";
 
-import { ActionButton, ActionLink } from "../../components/action/Action";
-import ValidatedInput from "../../components/validated-input/ValidatedInput";
 import Message from '../../components/message/Message';
-import { NAVIGATION_WARNING } from '../../../config/messages';
+import NavigationRow from '../../components/navigation-row/NavigationRow';
+import ValidatedInput from "../../components/validated-input/ValidatedInput";
+
+import { PHONE_VALIDATION_PATTERN } from '../../../config/patterns';
+import { 
+    NAVIGATION_WARNING, 
+    USER_DETAILS_TITLE, 
+    USER_DETAILS_DESCRIPTION, 
+    FIRST_NAME, 
+    LAST_NAME, 
+    ADDRESS, 
+    PHONE_NUMBER } from '../../../config/messages';
+
 
 const USER_DETAILS_SCHEMA = Joi.object({
-    'First Name': Joi.string().alphanum().min(2).max(128).required(),
-    'Last Name': Joi.string().alphanum().min(2).max(128).required(),
+    FIRST_NAME: Joi.string().alphanum().min(2).max(128).required().label(FIRST_NAME),
+    LAST_NAME: Joi.string().alphanum().min(2).max(128).required().label(LAST_NAME),
     
     // This type of input will validate both US / Canadian and international phone numbers, but the regex is a bit messy
-    'Phone Number': Joi.string().min(10).pattern(/^(\+0?1\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$/, 'phone number').required(),
+    PHONE_NUMBER: Joi.string().min(10).pattern(PHONE_VALIDATION_PATTERN, PHONE_NUMBER).required().label(PHONE_NUMBER),
         
     // It would be best to split this between multiple elements in a production setting
     // As I would like to keep to the project requirements, I'm only doing basic checks to allow for flexibility
-    'Address': Joi.string().alphanum().min(2).max(256).required()    
+    ADDRESS: Joi.string().min(2).max(256).required().label(ADDRESS)
 });
 
 /*
@@ -30,10 +40,10 @@ const UserDetails = () => {
 
     const [valid, setValid] = useState(false);
     
-    const [address, setAddress] = useState(userData['Address'] || '');
-    const [lastName, setLastName] = useState(userData['Last Name'] || '');
-    const [firstName, setFirstName] = useState(userData['First Name'] || '');
-    const [telephoneNumber, setTelephoneNumber] = useState(userData['Phone Number'] || '');
+    const [address, setAddress] = useState(userData.ADDRESS || '');
+    const [lastName, setLastName] = useState(userData.LAST_NAME || '');
+    const [firstName, setFirstName] = useState(userData.FIRST_NAME || '');
+    const [telephoneNumber, setTelephoneNumber] = useState(userData.PHONE_NUMBER || '');
 
     const [fieldErrors, setFieldErrors] = useState({});
 
@@ -42,20 +52,20 @@ const UserDetails = () => {
     // Every time one of the form fields is updated, we validate the form and save the user's progress
     useEffect(() => {
         // We start by collecting the values for all the form elements
-        const newValues = { 'First Name': firstName, 
-                            'Last Name': lastName, 
-                            'Phone Number': telephoneNumber, 
-                            'Address': address };
+        const newValues = { FIRST_NAME: firstName, 
+                            LAST_NAME: lastName, 
+                            PHONE_NUMBER: telephoneNumber, 
+                            ADDRESS: address };
 
         // Get an array of errors associated with the form fields
         const { error } = USER_DETAILS_SCHEMA.validate(newValues, {abortEarly: false});
         
         // If there are errors, update the error state and form validity
         setFieldErrors(error ? {
-            firstName: error.details.filter(error => error.context.key === 'First Name'),
-            lastName: error.details.filter(error => error.context.key === 'Last Name'),
-            phoneNumber: error.details.filter(error => error.context.key === 'Phone Number'),
-            address: error.details.filter(error => error.context.key === 'Address')
+            firstName: error.details.filter(error => error.context.key === 'FIRST_NAME'),
+            lastName: error.details.filter(error => error.context.key === 'LAST_NAME'),
+            phoneNumber: error.details.filter(error => error.context.key === 'PHONE_NUMBER'),
+            address: error.details.filter(error => error.context.key === 'ADDRESS')
         } : {});
         setValid(!error);
         
@@ -70,27 +80,21 @@ const UserDetails = () => {
     }, [firstName, lastName, telephoneNumber, address, valid]);
 
     return <>
-        <h2 className="title title--small">User Details</h2>
-        <p className="description">
-            We will start by gathering some basic information about you - all these data stay on your device and all fields are required.
-        </p>
+        <h2 className="title title--small">{USER_DETAILS_TITLE}</h2>
+        <p className="description">{USER_DETAILS_DESCRIPTION}</p>
+
         <Form method="post">
             {/* User data input fields */}
             <div className='user-details-form__inputs'>
-                <ValidatedInput type={'text'} name='First Name' updater={setFirstName} value={firstName} errors={fieldErrors.firstName}/>
-                <ValidatedInput type={'text'} name='Last Name' updater={setLastName} value={lastName} errors={fieldErrors.lastName}/>
-                <ValidatedInput type={'tel'} name='Phone Number' updater={setTelephoneNumber} value={telephoneNumber} errors={fieldErrors.phoneNumber}/>
-                <ValidatedInput type={'text'} name='Address' updater={setAddress} value={address} errors={fieldErrors.address}/>
+                <ValidatedInput type={'text'} name={FIRST_NAME} updater={setFirstName} value={firstName} errors={fieldErrors.firstName}/>
+                <ValidatedInput type={'text'} name={LAST_NAME} updater={setLastName} value={lastName} errors={fieldErrors.lastName}/>
+                <ValidatedInput type={'tel'} name={PHONE_NUMBER} updater={setTelephoneNumber} value={telephoneNumber} errors={fieldErrors.phoneNumber}/>
+                <ValidatedInput type={'text'} name={ADDRESS} updater={setAddress} value={address} errors={fieldErrors.address}/>
             </div>
 
-            {/* Warning message for user navigation */}
             {showNavigationMessage && <Message type='info'>{NAVIGATION_WARNING}</Message>}
             
-            {/* Bottom row - buttons for navigation */}
-            <div className='row pushed-to-sides'>
-                <ActionLink to={'/'} className='action--secondary'>Back</ActionLink>
-                <ActionButton enabled={valid}>Next</ActionButton>
-            </div>
+            <NavigationRow backLink='/' enabled={valid}/>
         </Form>
     </>
 }

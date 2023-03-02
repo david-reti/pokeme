@@ -1,8 +1,10 @@
 .container {
+  z-index: 1;
   padding: 1.6rem;
   max-width: min(8.5in, 80%);
   margin: 4rem auto;
   background: white;
+  position: relative;
   border-radius: var(--border-radius-default);
 }
 

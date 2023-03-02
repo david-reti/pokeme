@@ -1,6 +1,5 @@
-import { REQUEST_ERROR_MESSAGES } from "../../util/requestErrorMessages";
-
-const POKE_API_URL = 'https://pokeapi.co/api/v2'; 
+import { POKE_API_URL } from "../../config/urls";
+import { REQUEST_ERROR_MESSAGES, REQUEST_FAILED } from "../../config/messages";
 
 /* 
     This is a generic function for fetching resources from the PokeAPI.
@@ -15,7 +14,7 @@ const fetchFromPokeAPI = async resource => {
     try {
         const response = await fetch(resource);
         if(response.ok === false) {
-            return { error: REQUEST_ERROR_MESSAGES[response.status] || `The request to fetch data failed with status ${response.status} `, resource: {}};
+            return { error: REQUEST_ERROR_MESSAGES[response.status] || (REQUEST_FAILED + `${response.status}`), resource: {}};
         }
         return { error: '', resource: (await response.json())};
     } catch(error) {

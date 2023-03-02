@@ -2,6 +2,7 @@
     display: flex;
     font-size: 1.75rem;
     flex-direction: column;
+    text-transform: capitalize;
     font-family: var(--sans-serif-font);
 }
 

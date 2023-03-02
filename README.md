@@ -1,21 +1,21 @@
-# PokeMe - The Nascent Project
+# PokéMe - Nascent Project
 
-This is my version of the take home project for Nascent digital, which consists of a simple web app to collect information about the user, and allow them to select their favourite Pokemon. One of the most interesting parts of software development is the set of tradeoffs made in the process, and I have documented some of my thoughts and philosophies in this document, as well in code comments.
+This is my version of the take home project for Nascent digital, which consists of a simple web app to collect information about the user, and allow them to select their favourite Pokémon. One of the most interesting parts of software development is the set of tradeoffs made in the process, and I have documented some of my thoughts and philosophies in this document, as well in code comments.
 
 ## General Approach
 
 Software development involves answering a few important questions, which reduce the amount of agonizing in development, if you're lucky. One of these questions is: "How much do I need this?". It's an interesting question, because on one hand it highlights the fact that dependencies make you dependent on a package and on the other hand, it's important to think ahead and ease the possible scaling and improvement of the software.
 
-Keeping this in mind, I follow a somewhat brutalist approach to development in which I focus on delivering the purest possible expression of an idea. I have used icon libraries, CSS preprocessors etc. in the past, but I don't think they are necessary for this project and have stuck with defaults whenever possible.   
+Keeping this in mind, I follow a somewhat minimal approach to development in which I focus on delivering the purest possible expression of an idea. I have used icon libraries, CSS preprocessors etc. in the past, but I don't think they are necessary for this project and have stuck with defaults whenever possible.   
 
 ## Libraries Used
 
 - React Router (React doesn't have routing built-in and this is the most popular solution)
 - Joi (Validation can be tricky to get right when working fast, and this library helps)
 
-# Known Bugs
+## Known Bugs
 
-- When filtering the list of pokemon, the entire background resizes which is an annoying effect. This could be fixed by using empty placeholder elements or setting a minimum height on the search results, or having a seperate background element but I don't like that look either - needs a little more experimentation.
+- ~~When filtering the list of pokemon, the entire background resizes which is an annoying effect. This could be fixed by using empty placeholder elements or setting a minimum height on the search results, or having a seperate background element but I don't like that look either - needs a little more experimentation.~~ - Fixed
 
 # Create React App Starter Documentation
 

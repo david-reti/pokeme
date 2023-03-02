@@ -1,11 +1,13 @@
 import './Footer.css'
 
+import { CREDITS, DEVELOPER } from '../../../config/messages';
+
 const Footer = () =>
     <footer className='footer'>
         <p className='footer__text'>
-            This site was developed by David Reti from <a href='https://davidreti.net'>davidreti.net</a>.
+            {DEVELOPER}<a href='https://davidreti.net'>davidreti.net</a>
             <br/>
-            Credit to Three-shots from Pexels for the background image. Thanks!
+            {CREDITS}
         </p>
     </footer>
 

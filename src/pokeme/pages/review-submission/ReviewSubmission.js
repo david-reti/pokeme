@@ -1,13 +1,26 @@
-import { ActionButton, ActionLink } from "../../components/action/Action";
+import NavigationRow from "../../components/navigation-row/NavigationRow";
+
+import { 
+    FAVOURITES_TITLE, 
+    SUBMIT, 
+    SUBMIT_DESCRIPTION, 
+    SUBMIT_TITLE, 
+    USER_DETAILS_TITLE } from "../../../config/messages";
 
 const ReviewSubmission = () =>
     <>
-        <h1 className="title title--small">Review Submission</h1>
-        <p className="description">Here you can view the data which will be submitted and go back to any previous page to enter it again</p>
-        <div className="row pushed-to-sides">
-            <ActionLink to={'/user/favourites'} className='action--secondary'>Back</ActionLink>
-            <ActionButton>Submit</ActionButton>
+        <h1 className="title title--small">{SUBMIT_TITLE}</h1>
+        <p className="description">{SUBMIT_DESCRIPTION}</p>
+
+        <div className="card">
+            <h3>{USER_DETAILS_TITLE}</h3>
         </div>
+
+        <div className="card">
+            <h3>{FAVOURITES_TITLE}</h3>
+        </div>
+
+        <NavigationRow backLink='/user/favourites' actionText={SUBMIT}/>
     </>
 
 export default ReviewSubmission;

@@ -1,14 +1,13 @@
 import { ActionLink } from '../../components/action/Action';
 
+import { ROOT_ACTION, ROOT_DESCRIPTION, ROOT_TITLE } from '../../../config/messages';
+
 const Root = () =>
     <>
-        <h1 className='title'>Welcome!</h1>
-        <p className='description'>
-            This is a simple web app to gather some input from the user and help them select their favourite Pokémon - 
-            it will work on computers and phones, saving the user's preferences to their local device.
-        </p>
+        <h1 className='title'>{ROOT_TITLE}</h1>
+        <p className='description'>{ROOT_DESCRIPTION}</p>
         <div className='row'>
-            <ActionLink to={'user/details'} className='pushed-right'>Let's Get Started</ActionLink>
+            <ActionLink to={'user/details'} className='pushed-right'>{ROOT_ACTION}</ActionLink>
         </div>
     </>
 

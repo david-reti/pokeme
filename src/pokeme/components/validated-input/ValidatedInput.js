@@ -1,5 +1,6 @@
-import { useState } from 'react'
 import './ValidatedInput.css'
+
+import { useState } from 'react'
 
 /* 
     This is a wrapper around an input component which allows for validation messages to be displayed.
