@@ -30,13 +30,13 @@ const POKEMON_LIST_LOAD_ERROR = 'There was an error loading a list of pokemon fr
 const ROOT_TITLE = 'Welcome!';
 
 const ROOT_DESCRIPTION = `  This is a simple web app to gather some input from the user and help them select their favourite Pokémon - 
-                            it will work on computers and phones, saving the user's preferences to their local device.`;
+                            it will work on computers and phones, sending the user's preferences to a mock API.`;
 
 const ROOT_ACTION = "Let's Get Started";
 
 const USER_DETAILS_TITLE = 'User Details';
 
-const USER_DETAILS_DESCRIPTION = ' We will start by gathering some basic information about you - all these data stay on your device and all fields are required.';
+const USER_DETAILS_DESCRIPTION = ' We will start by gathering some basic information about you - all fields are required and will not be stored on the backend.';
 
 const FAVOURITES_TITLE = 'Favourite Pokémon';
 
