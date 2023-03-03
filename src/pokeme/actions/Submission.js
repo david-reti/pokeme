@@ -11,6 +11,7 @@ const AttemptSubmission = async () => {
     if(response.ok) {
         return redirect('/submission/success');
     }
+    return null;
 }
 
 export default AttemptSubmission;
