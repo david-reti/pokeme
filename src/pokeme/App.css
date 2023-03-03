@@ -1,6 +1,6 @@
 .container {
   z-index: 1;
-  max-width: min(8.5in, 80%);
+  max-width: min(8.5in, 90%);
   margin: 4rem auto;
   background: white;
   position: relative;

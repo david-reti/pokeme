@@ -1,12 +1,18 @@
 # PokéMe - Nascent Project
 
-This is my version of the take home project for Nascent digital, which consists of a simple web app to collect information about the user, and allow them to select their favourite Pokémon. One of the most interesting parts of software development is the set of tradeoffs made in the process, and I have documented some of my thoughts and philosophies in this document, as well in code comments.
+This is my version of the take home project for Nascent digital, which consists of a simple web app to collect information about the user, and allow them to select their favourite Pokémon. It's been a real pleasure working on it! I have listed some of my thoughts and assumptions in this document.
 
 ## General Approach
 
-Software development involves answering a few important questions, which reduce the amount of agonizing in development, if you're lucky. One of these questions is: "How much do I need this?". It's an interesting question, because on one hand it highlights the fact that dependencies make you dependent on a package and on the other hand, it's important to think ahead and ease the possible scaling and improvement of the software.
+For this project I followed a somewhat minimal approach to development in which I focus on delivering the purest possible expression of an idea, at a high quality. I have used icon libraries, CSS preprocessors etc. in the past, but I don't think they are necessary for this project and have stuck with defaults whenever possible.   
 
-Keeping this in mind, I follow a somewhat minimal approach to development in which I focus on delivering the purest possible expression of an idea. I have used icon libraries, CSS preprocessors etc. in the past, but I don't think they are necessary for this project and have stuck with defaults whenever possible.   
+## Design Notes
+
+Generally, I try my best to create the best software I can. I had to take a couple of factors into consideration as I was developing this project:
+
+- I couldn't find a way to filter API results for pokemon by name, and instead I handle the filtering by loading a big list of all the pokemon first - this is not the most efficient, and if I had more time I would optimize it.
+- The address input is not validated as extensively as I would like - I intentionally made the rules loose to allow for flexibility. If I were starting from scratch, I would most likely use separate fields for address, city, province etc. which would also make validation easier.
+- I have created a really simple backend to show that I can submit the results - it doesn't store any data, it only returns a success code. Storing both the backend and the frontend in the same repo, and especially in the same docker container is, in my opinion, not the best practice but I wanted to keep this project simple.
 
 ## Libraries Used
 

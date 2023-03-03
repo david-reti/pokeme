@@ -49,7 +49,7 @@ const UserFavourites = () => {
     // I don't like this because it's an O(n) search for every pokemon, but I don't have enough time to optimize it
     const filteredPokemon = () => 
         allAvailablePokemon.filter(pokemon => (pokemonOfType.includes(pokemon.name) || searchInput.category === DEFAULT_CATEGORY) && 
-            pokemon.name.includes(searchInput.term)).slice(0, PAGE_SIZE);
+            pokemon.name.toUpperCase().includes(searchInput.term.toUpperCase())).slice(0, PAGE_SIZE);
 
     // We load the entire list of pokemon only once because I couldn't find a way to filter the API by name
     // It's about 80kb so not the end of the world, but I still feel a bit bad about the solution
